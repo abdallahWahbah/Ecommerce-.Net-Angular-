@@ -1,0 +1,96 @@
+<div class="filters">
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Search products"
+      (keyup)="onSearch($any($event.target).value)"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Sort" (selectionChange)="onSortChange($event.value)">
+      <mat-option value="priceDesc">Price ↑</mat-option>
+      <mat-option value="priceAsc">Price ↓</mat-option>
+      <mat-option value="nameAsc">Name A-Z</mat-option>
+      <mat-option value="nameDesc">Name Z-A</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Category" (selectionChange)="onCategoryChange($event.value)">
+      <mat-option value="">All</mat-option>
+      @for(cat of categories(); track cat.id){
+        <mat-option [value]="cat.id">
+          {{ cat.name }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if(authService.getRole() === "Admin"){
+    <div class="add__product--container">
+      <app-custom-button
+        label="Add Product"
+        type="button"
+        (click)="navigateToAddProduct()"
+      />
+    </div>
+  }
+</div>
+
+<div class="products">
+
+    @if (loading()) {
+        <p>Loading...</p>
+    }
+
+    @for (product of products(); track product.id) {
+        <mat-card class="product-card">
+
+          <img
+            mat-card-image
+            class="product-image"
+            [src]="getImage(product.imageUrl)"
+            [alt]="product.name"
+          />
+          <mat-card-content>
+            <h3 class="product-title">
+              {{ product.name | slice:0:27 }}{{ product.name.length > 27 ? '...' : '' }}
+            </h3>
+            <mat-chip-set>
+              <mat-chip color="primary" selected>
+                {{ product.categoryName }}
+              </mat-chip>
+            </mat-chip-set>
+            <mat-divider></mat-divider>
+            <div class="product-footer">
+              <span class="price">
+                {{ product.price }} $
+              </span>
+              <app-custom-button
+                type="button"
+                [label]="authService.getRole() === 'Admin' ? 'Edit' : 'Details'"
+                (click)="navigateToDetailsOrEdit(product)"
+                />
+            </div>
+          </mat-card-content>
+        </mat-card>
+    }
+</div>
+
+<div class="pagination">
+    <app-custom-button
+      label="Prev"
+      type="button"
+      (click)="changePage(pageNumber() - 1)"
+      [disabled]="pageNumber() === 1"
+    />
+    <span>Page {{ pageNumber() }}</span>
+    <app-custom-button
+      label="Next"
+      type="button"
+      [disabled]="pageNumber() >= totalPages()"
+      (click)="changePage(pageNumber() + 1)"
+    />
+</div>

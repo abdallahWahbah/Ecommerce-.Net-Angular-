@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBbOg8LmAlY=",
+  "dgSpecHash": "9+gMiJooTOk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\abdow\\OneDrive\\Desktop\\ECommerceOrderManagement\\backend\\ECommerce.Application\\ECommerce.Application.csproj",
+  "projectFilePath": "C:\\Users\\abdow\\OneDrive\\Desktop\\ECommerceOrderManagement\\Back-end\\ECommerce.Application\\ECommerce.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdow\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\abdow\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",

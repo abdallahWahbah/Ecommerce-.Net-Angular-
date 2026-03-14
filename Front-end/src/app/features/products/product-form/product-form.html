@@ -1,0 +1,14 @@
+<div class="product__add">
+  <h2> {{ isEditMode ? 'Edit Product' : 'Add Product' }} </h2>
+  @if(loading()){
+    <mat-spinner></mat-spinner>
+  }
+  @else {
+    <app-dynamic-form
+      [fields]="fields"
+      [initialData]="productData"
+      [submitLabel]="isEditMode ? 'Update Product' : 'Create Product'"
+      (formSubmit)="onSubmit($event)"
+    ></app-dynamic-form>
+  }
+</div>

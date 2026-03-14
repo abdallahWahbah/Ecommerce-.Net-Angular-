@@ -35,6 +35,23 @@ namespace ECommerce.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Name = "Electronics"
+                        },
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Name = "Clothes"
+                        },
+                        new
+                        {
+                            Id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Name = "Books"
+                        });
                 });
 
             modelBuilder.Entity("ECommerce.Domain.Entities.Notification", b =>
@@ -132,6 +149,10 @@ namespace ECommerce.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -147,6 +168,158 @@ namespace ECommerce.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000101"),
+                            CategoryId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Description = "Keyboard for beginners",
+                            ImageUrl = "/images/products/laptop.jpeg",
+                            Name = "Laptop",
+                            Price = 25m,
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000102"),
+                            CategoryId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Description = "Magic mouse",
+                            ImageUrl = "/images/products/mouse.jpeg",
+                            Name = "Mouse",
+                            Price = 80m,
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000103"),
+                            CategoryId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Description = "55 inch UHD TV",
+                            ImageUrl = "/images/products/monitor.jpeg",
+                            Name = "Samsung 4K Smart TV",
+                            Price = 900m,
+                            StockQuantity = 25
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000104"),
+                            CategoryId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Description = "Noise cancelling headphones",
+                            ImageUrl = "/images/products/airpods.jpeg",
+                            Name = "Sony Headphones",
+                            Price = 250m,
+                            StockQuantity = 60
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000105"),
+                            CategoryId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Description = "RGB gaming keyboard",
+                            ImageUrl = "/images/products/keyboard.jpeg",
+                            Name = "Mechanical Keyboard",
+                            Price = 150m,
+                            StockQuantity = 70
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000035"),
+                            CategoryId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Description = "Comfortable cotton casual shirt",
+                            ImageUrl = "/images/products/menCasualShirt.jpeg",
+                            Name = "Men Casual Shirt",
+                            Price = 40m,
+                            StockQuantity = 120
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000036"),
+                            CategoryId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Description = "Stylish leather handbag",
+                            ImageUrl = "/images/products/leatherHandbag.jpeg",
+                            Name = "Women Handbag",
+                            Price = 85m,
+                            StockQuantity = 70
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000037"),
+                            CategoryId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Description = "Classic brown leather belt",
+                            ImageUrl = "/images/products/brownLeatherBelt.jpeg",
+                            Name = "Men Leather Belt",
+                            Price = 30m,
+                            StockQuantity = 150
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000038"),
+                            CategoryId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Description = "Warm winter jacket for cold weather",
+                            ImageUrl = "/images/products/winterJacket.jpeg",
+                            Name = "Men Winter Jacket",
+                            Price = 180m,
+                            StockQuantity = 45
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000039"),
+                            CategoryId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Description = "Soft knitted cardigan",
+                            ImageUrl = "/images/products/knittedCardigan.jpeg",
+                            Name = "Women Cardigan",
+                            Price = 65m,
+                            StockQuantity = 90
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000045"),
+                            CategoryId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Description = "Guide to building maintainable software architecture by Robert C. Martin",
+                            ImageUrl = "/images/products/CleanArchitecture.jpeg",
+                            Name = "Clean Architecture",
+                            Price = 55m,
+                            StockQuantity = 70
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000046"),
+                            CategoryId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Description = "Best practices and tips for professional programmers",
+                            ImageUrl = "/images/products/PragmaticProgrammer.jpeg",
+                            Name = "The Pragmatic Programmer",
+                            Price = 60m,
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000047"),
+                            CategoryId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Description = "Comprehensive guide to algorithms and data structures",
+                            ImageUrl = "/images/products/algorithms-book.jpeg",
+                            Name = "Introduction to Algorithms",
+                            Price = 90m,
+                            StockQuantity = 40
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000048"),
+                            CategoryId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Description = "Modern systems design and distributed data systems",
+                            ImageUrl = "/images/products/data-intensive.png",
+                            Name = "Designing Data-Intensive Applications",
+                            Price = 75m,
+                            StockQuantity = 35
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000049"),
+                            CategoryId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Description = "Beginner friendly explanation of software design patterns",
+                            ImageUrl = "/images/products/head-first-design-patterns.jpeg",
+                            Name = "Head First Design Patterns",
+                            Price = 65m,
+                            StockQuantity = 60
+                        });
                 });
 
             modelBuilder.Entity("ECommerce.Domain.Entities.User", b =>
@@ -181,7 +354,7 @@ namespace ECommerce.Infrastructure.Migrations
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
                             Email = "admin@admin.com",
                             Name = "Admin",
-                            PasswordHash = "admin123",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKcP55h+md51rw3sJ+3hPPxBkLYsA4lPDj+MUvfSJ9N8mOZgcX/7SgJhZO2ZNxWJ4g==",
                             Role = "Admin"
                         },
                         new
@@ -189,7 +362,7 @@ namespace ECommerce.Infrastructure.Migrations
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
                             Email = "buyer@buyer.com",
                             Name = "Buyer",
-                            PasswordHash = "buyer123",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDPStHtHtQ8nWRVwPLtnHMIOX8Cz+lVeQhYKpxDiLbwjs7CKVS3zZmTdEIVHr4/nBA==",
                             Role = "Buyer"
                         });
                 });

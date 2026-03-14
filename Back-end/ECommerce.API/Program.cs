@@ -4,10 +4,12 @@ using ECommerce.API.Middleware;
 using ECommerce.API.Services;
 using ECommerce.Application.DependencyInjection;
 using ECommerce.Application.Interfaces;
+using ECommerce.Domain.Entities;
 using ECommerce.Infrastructure.DependencyInjection;
 using ECommerce.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -36,7 +38,7 @@ namespace ECommerce.API
                     Scheme = "bearer",
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
-                    Description = "Enter Bearer token like this: Bearer {your token}"
+                    Description = "Enter Bearer token"
                 });
 
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -106,11 +108,41 @@ namespace ECommerce.API
                         });
 
                         await context.Response.WriteAsync(result);
+                    },
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+
+                        var path = context.HttpContext.Request.Path;
+
+                        if (!string.IsNullOrEmpty(accessToken) &&
+                            path.StartsWithSegments("/notificationHub"))
+                        {
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
                     }
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular",
+                    policy =>
+                    {
+                        policy
+                            .WithOrigins("http://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
+            });
+
             var app = builder.Build();
+
+
+            var hasher = new PasswordHasher<User>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -124,6 +156,10 @@ namespace ECommerce.API
 
 
             app.UseMiddleware<ExceptionMiddleware>();
+            app.UseStaticFiles();
+
+            // Allow CORS for angular
+            app.UseCors("AllowAngular");
             app.UseAuthentication();
             app.UseAuthorization();
 

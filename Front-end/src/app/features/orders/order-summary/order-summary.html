@@ -1,0 +1,56 @@
+<div class="orders-container">
+    <h2>Your Orders history</h2>
+    @if(orders().length === 0){
+        <p>No orders yet</p>
+    }
+    @for(order of orders(); track order.orderId){
+        <mat-card class="order-card">
+            <div class="order-header">
+                <div>
+                    <strong>Order ID</strong>
+                    <p>{{order.orderId}}</p>
+                </div>
+                <div class="order-total">
+                    <span>Total Paid</span>
+                    <h3>{{order.totalAmount | currency}}</h3>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="items">
+                @for(item of order.items; track item.productId){
+                    <div class="item">
+                        <div>
+                            <p><strong>Product</strong></p>
+                            <p>{{item.productName}}</p>
+                        </div>
+                        <div>
+                            <p>Qty</p>
+                            <p>{{item.quantity}}</p>
+                        </div>
+                        <div>
+                            <p>Price</p>
+                            <p>{{item.price | currency}}</p>
+                        </div>
+                        <div>
+                            <p>Total</p>
+                            <p>{{item.total | currency}}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            @if(order.discount > 0){
+                <div class="discount">
+                    Discount Applied:
+                    <strong>-{{order.discount | currency}}</strong>
+                </div>
+            }
+        </mat-card>
+    }
+    <div class="browse">
+        <app-custom-button 
+            label="Browse Products"
+            type="button"
+            (click)="browseProducts()"
+        />
+    </div>
+</div>

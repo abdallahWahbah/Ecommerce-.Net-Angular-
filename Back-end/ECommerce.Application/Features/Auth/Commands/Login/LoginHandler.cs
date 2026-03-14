@@ -57,6 +57,7 @@ namespace ECommerce.Application.Features.Auth.Commands.Login
                 Token = token,
                 Email = user.Email,
                 Role = user.Role,
+                UserId = user.Id
             };
         }
     }

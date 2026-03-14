@@ -1,0 +1,63 @@
+<div class="cart-container">
+    @if(cartItems().length === 0){
+        <p class="empty">Your cart is empty</p>
+    }
+    @for(item of cartItems(); track item.productId){
+        <mat-card class="cart-item">
+            <img
+                class="product-image"
+                [src]="env.apiUrl + item.imageUrl"
+            />
+            <div class="info">
+                <h3>{{item.name}}</h3>
+                <p class="price">{{item.price * item.quantity | currency}}</p>
+                <div class="qty">
+                <button
+                    mat-icon-button
+                    (click)="decrease(item.productId)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <span>{{item.quantity}}</span>
+                <button
+                    mat-icon-button
+                    (click)="increase(item.productId)"
+                    [disabled]="item.quantity >= item.stock">
+                    <mat-icon>add</mat-icon>
+                </button>
+                </div>
+            </div>
+            <button
+                mat-icon-button
+                color="warn"
+                (click)="remove(item.productId)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card>
+    }
+
+    @if(cartItems().length > 0){
+        <div class="summary">
+            <p>Total: {{total() | currency}}</p> <!--before discount-->
+            @if(discount() > 0){
+                <p class="discount">Discount: -{{discount() | currency}}</p>
+            }
+            <h3>Total To Pay: {{totalToPay() | currency}}</h3>
+            @if(total() < 1000){
+                <mat-hint class="discount-hint">
+                Add {{1000 - total() | currency}} more to get 10% discount
+                </mat-hint>
+            }
+            <br>
+            <div class="checkout-button-container">
+                <app-custom-button
+                    label="Checkout"
+                    type="button"
+                    (click)="checkout()"
+                />
+            </div>
+
+        </div>
+
+    }
+
+</div>

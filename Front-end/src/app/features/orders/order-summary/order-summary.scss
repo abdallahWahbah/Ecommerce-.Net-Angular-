@@ -1,0 +1,45 @@
+.orders-container{
+  max-width:900px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.order-card{
+  margin-bottom:20px;
+  padding:20px;
+}
+
+.order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.order-total h3{
+  margin:0;
+  color:#2e7d32;
+}
+
+.items{
+  margin-top:15px;
+}
+
+.item{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.discount{
+  margin-top:10px;
+  color:#e53935;
+  font-weight:600;
+}
+
+.browse{
+  margin-top:30px;
+  text-align:center;
+  display: flex;
+  justify-content: flex-end;
+}

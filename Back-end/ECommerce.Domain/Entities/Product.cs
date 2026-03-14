@@ -12,6 +12,8 @@
 
         public int StockQuantity { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public Guid CategoryId { get; set; }
 
         public Category Category { get; set; }

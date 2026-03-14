@@ -1,0 +1,19 @@
+<button
+    mat-raised-button
+    color="warn"
+    [type]="type"
+    class="submit-btn"
+    [disabled]="disabled || loading"
+>
+    @if (!loading) {
+        {{ label }}
+    }
+    @else {
+        <mat-progress-spinner
+            diameter="20"
+            mode="indeterminate"
+            color="accent"
+            class="white-spinner"
+        ></mat-progress-spinner>
+    }
+</button>

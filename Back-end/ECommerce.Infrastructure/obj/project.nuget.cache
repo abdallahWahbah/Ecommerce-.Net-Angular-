@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "83mcOb8Dlzo=",
+  "dgSpecHash": "8mmLVssUXKc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\abdow\\OneDrive\\Desktop\\ECommerceOrderManagement\\backend\\ECommerce.Infrastructure\\ECommerce.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\abdow\\OneDrive\\Desktop\\ECommerceOrderManagement\\Back-end\\ECommerce.Infrastructure\\ECommerce.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdow\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\abdow\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

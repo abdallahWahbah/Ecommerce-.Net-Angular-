@@ -15,6 +15,24 @@ namespace ECommerce.Application.Features.Products.Commands.CreateProduct
 
         public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.Image.FileName);
+
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/products");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            var filePath = Path.Combine(folderPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await request.Image.CopyToAsync(stream);
+            }
+
+            var imageUrl = "/images/products/" + fileName;
+
             var product = new Product()
             {
                 Id = Guid.NewGuid(),
@@ -22,7 +40,8 @@ namespace ECommerce.Application.Features.Products.Commands.CreateProduct
                 Description = request.Description,
                 Price = request.Price,
                 StockQuantity = request.StockQuantity,
-                CategoryId = request.CategoryId
+                CategoryId = request.CategoryId,
+                ImageUrl = imageUrl
             };
 
             await _unitOfWork.Repository<Product>().AddAsync(product);

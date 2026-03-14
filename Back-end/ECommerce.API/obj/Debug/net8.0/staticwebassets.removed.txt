@@ -1,0 +1,3 @@
+C:\Users\abdow\OneDrive\Desktop\ECommerceOrderManagement\Back-end\ECommerce.API\wwwroot\images\products\c111e060-dd58-45f8-b4c7-3b8b659f9cdc.jpg
+C:\Users\abdow\OneDrive\Desktop\ECommerceOrderManagement\Back-end\ECommerce.API\wwwroot\images\products\c452336a-f704-4cd8-95f6-59a29ea7a730.jpg
+C:\Users\abdow\OneDrive\Desktop\ECommerceOrderManagement\Back-end\ECommerce.API\wwwroot\images\products\ff6ff59d-a107-4570-860c-d3b1a7220a5d.jpg

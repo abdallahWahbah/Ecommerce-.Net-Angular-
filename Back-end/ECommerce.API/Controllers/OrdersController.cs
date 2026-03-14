@@ -1,4 +1,5 @@
 ﻿using ECommerce.Application.Features.Orders.Commands.CreateOrder;
+using ECommerce.Application.Features.Orders.Queries.GetOrderByUserId;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,18 @@ namespace ECommerce.API.Controllers
         public OrdersController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [Authorize]
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetUserOrders(Guid userId)
+        {
+            var result = await _mediator.Send(new GetOrderByUserIdQuery
+            {
+                UserId = userId
+            });
+
+            return Ok(result);
         }
 
         [Authorize]

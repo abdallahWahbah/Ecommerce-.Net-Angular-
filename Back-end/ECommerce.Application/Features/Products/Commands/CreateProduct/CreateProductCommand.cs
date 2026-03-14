@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace ECommerce.Application.Features.Products.Commands.CreateProduct
 {
@@ -13,5 +14,7 @@ namespace ECommerce.Application.Features.Products.Commands.CreateProduct
         public int StockQuantity { get; set; }
 
         public Guid CategoryId { get; set; }
+
+        public IFormFile Image { get; set; }
     }
 }

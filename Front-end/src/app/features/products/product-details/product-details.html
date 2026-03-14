@@ -1,0 +1,33 @@
+@if(product()){
+    <div class="product-details">
+
+    <mat-card class="details-card">
+
+        <div class="details-container">
+            <div class="image-section">
+                <img
+                    [src]="getImage(product()?.imageUrl!)"
+                    [alt]="product()?.name"
+                />
+            </div>
+            <div class="info-section">
+                <h1 class="product-title">{{ product()?.name }}</h1>
+                <mat-chip-set>
+                    <mat-chip color="primary" selected>
+                        {{ product()?.categoryName }}
+                    </mat-chip>
+                </mat-chip-set>
+                <p class="description">{{ product()?.description }}</p>
+                <div class="price-section">
+                    <span class="price">{{ product()?.price }} $</span>
+                    <app-custom-button
+                        label="Add to cart"
+                        type="button"
+                        (click)="addToCart(product()!)"
+                    />
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+}

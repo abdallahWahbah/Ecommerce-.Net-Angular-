@@ -1,0 +1,15 @@
+wwwroot\images\products\airpods.jpeg
+wwwroot\images\products\algorithms-book.jpeg
+wwwroot\images\products\brownLeatherBelt.jpeg
+wwwroot\images\products\CleanArchitecture.jpeg
+wwwroot\images\products\data-intensive.png
+wwwroot\images\products\head-first-design-patterns.jpeg
+wwwroot\images\products\keyboard.jpeg
+wwwroot\images\products\knittedCardigan.jpeg
+wwwroot\images\products\laptop.jpeg
+wwwroot\images\products\leatherHandbag.jpeg
+wwwroot\images\products\menCasualShirt.jpeg
+wwwroot\images\products\monitor.jpeg
+wwwroot\images\products\mouse.jpeg
+wwwroot\images\products\PragmaticProgrammer.jpeg
+wwwroot\images\products\winterJacket.jpeg
